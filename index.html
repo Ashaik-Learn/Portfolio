@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Asif Shaik | IT Professional Portfolio</title>
+  <meta name="description" content="Portfolio of Asif Shaik — Network Engineering, Systems Administration, and Technical Support." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0A1020; --card:#0F1630; --text:#E6ECF5; --muted:#A9B4C6; --accent:#00E0C7; --accent-2:#4DDCF9; --link:#6FE6FF; --border:rgba(255,255,255,0.08); --shadow:0 10px 30px rgba(0,224,199,0.15); --radius:14px; }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:radial-gradient(1200px 800px at 80% -10%, rgba(77,220,249,0.12), transparent 50%), radial-gradient(900px 700px at -10% 20%, rgba(0,224,199,0.12), transparent 55%), var(--bg);line-height:1.6}
+    a{color:var(--link);text-decoration:none} a:hover{text-decoration:underline}
+    .container{width:min(1100px,92%);margin:0 auto}
+    header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:linear-gradient(180deg, rgba(10,16,32,0.8), rgba(10,16,32,0.4));border-bottom:1px solid var(--border)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:0.3px}
+    .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 0 18px rgba(111,230,255,0.5)}
+    .nav-links{display:flex;gap:22px;font-weight:500} .nav-links a{color:var(--text);opacity:.9} .nav-links a:hover{color:var(--accent);opacity:1}
+    .hero{padding:84px 0 54px} .hero-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
+    .badge{display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:rgba(15,22,48,0.6);box-shadow:var(--shadow);transform:translateY(10px);opacity:0;animation:riseIn 900ms 140ms forwards ease-out}
+    .badge .ping{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(0,224,199,0.6);animation:ping 2.2s infinite}
+    .title{font-size:clamp(30px,4.3vw,52px);line-height:1.1;font-weight:800;margin:14px 0 10px;letter-spacing:-.5px;transform:translateY(12px);opacity:0;animation:riseIn 900ms 240ms forwards ease-out}
+    .subtitle{color:var(--muted);font-weight:500;max-width:58ch;transform:translateY(14px);opacity:0;animation:riseIn 900ms 340ms forwards ease-out}
+    .cta{display:flex;gap:14px;margin-top:26px;transform:translateY(16px);opacity:0;animation:riseIn 900ms 440ms forwards ease-out}
+    .btn{border:1px solid var(--border);color:var(--text);background:linear-gradient(180deg, rgba(20,28,56,0.9), rgba(12,18,40,0.9));padding:12px 18px;border-radius:12px;font-weight:600;letter-spacing:.2px;transition:transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease}
+    .btn:hover{transform:translateY(-2px);border-color:rgba(111,230,255,0.5);box-shadow:0 10px 20px rgba(0,224,199,0.15)} .btn.primary{background:linear-gradient(135deg, rgba(0,224,199,0.18), rgba(77,220,249,0.14));border-color:rgba(0,224,199,0.35)}
+    .profile-card{background:linear-gradient(180deg, rgba(17,27,56,0.9), rgba(12,18,40,0.9));border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);transform:translateY(18px);opacity:0;animation:riseIn 900ms 520ms forwards ease-out}
+    .profile-card .grid{display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:center}
+    .avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#182042,#101833);border:1px solid var(--border);position:relative;overflow:hidden}
+    .avatar::after{content:"";position:absolute;inset:-30%;background:radial-gradient(60px 60px at 20% 20%, rgba(0,224,199,0.25), transparent 60%);filter:blur(12px)}
+    .profile-meta{font-size:14px;color:var(--muted)}
+    section.section{padding:56px 0} .section h2{font-size:clamp(22px,3vw,30px);margin:0 0 16px;letter-spacing:-.2px} .section p.lead{color:var(--muted);margin:0 0 10px}
+    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{grid-column:span 12;background:linear-gradient(180deg, rgba(17,27,56,0.75), rgba(12,18,40,0.75));border:1px solid var(--border);border-radius:var(--radius);padding:18px;transition:transform 200ms ease, border-color 200ms ease}
+    .card:hover{transform:translateY(-2px);border-color:rgba(0,224,199,0.35)} .card h3{margin:0 0 6px;font-size:18px} .card .meta{color:var(--muted);font-size:14px;margin-bottom:10px}
+    .list{margin:0;padding-left:18px}
+    @media (min-width:720px){.hero-wrap{grid-template-columns:1.1fr .9fr}.card{grid-column:span 6}}
+    @media (min-width:1024px){.card{grid-column:span 4}}
+    .reveal{opacity:0;transform:translateY(16px)} .reveal.show{opacity:1;transform:translateY(0);transition:opacity 640ms ease, transform 640ms ease}
+    footer{border-top:1px solid var(--border);padding:28px 0 60px;color:var(--muted)}
+    @keyframes riseIn{to{opacity:1;transform:translateY(0)}} @keyframes ping{0%{box-shadow:0 0 0 0 rgba(0,224,199,0.6)}70%{box-shadow:0 0 0 12px rgba(0,224,199,0)}100%{box-shadow:0 0 0 0 rgba(0,224,199,0)}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="dot"></span><span>ASIF SHAIK</span></div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="container hero-wrap">
+        <div>
+          <div class="badge"><span class="ping"></span><span>Network Engineering • Systems Administration • Technical Support</span></div>
+          <h1 class="title">IT Professional with 5+ Years in Networks &amp; Systems</h1>
+          <p class="subtitle">Experienced in network engineering, system administration, and technical support. Currently pursuing Project Management in IT (PMC) at Seneca Polytechnic, Ontario.</p>
+          <div class="cta">
+            <a class="btn primary" href="#contact">Contact Me</a>
+            <a class="btn" href="cv/ASIF_SHAIK_CV.pdf" download>Download CV</a>
+          </div>
+        </div>
+        <aside class="profile-card">
+          <div class="grid">
+            <div class="avatar" aria-hidden="true"></div>
+            <div>
+              <div style="font-weight:700">Asif Shaik</div>
+              <div class="profile-meta">Van Horne Ave, North York, ON · 437-223-3792 · asifshake345gmail.com</div>
+              <div class="profile-meta">Availability: Fri–Sun (full day), Mon–Thu (8am–4pm); flexible incl. night shifts</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <section id="about" class="section container reveal">
+      <h2>Professional Summary</h2>
+      <p class="lead">Experienced IT professional with 5 years across network engineering, systems administration, and technical support. Seeking a part‑time role to apply technical expertise and support business operations.</p>
+    </section>
+    <section id="experience" class="section container reveal">
+      <h2>Work Experience</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Freelance — IT Capitals</h3>
+          <div class="meta">Feb 2025 — Present · System Administration &amp; Support</div>
+          <ul class="list">
+            <li>Provide system administration and technical support for clients.</li>
+            <li>Assist with network configuration, patching, and user onboarding.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>System Administrator — Al Burj Holding, Dubai</h3>
+          <div class="meta">Apr 2023 — Dec 2024</div>
+          <ul class="list">
+            <li>Managed server configurations, backups, and network security policies.</li>
+            <li>Delivered hardware/software support and root‑cause troubleshooting.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Network Engineer — DU Telecom, Dubai</h3>
+          <div class="meta">Jan 2021 — Dec 2022</div>
+          <ul class="list">
+            <li>Designed and maintained enterprise network infrastructure.</li>
+            <li>Resolved network incidents and optimized performance and reliability.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Field Technician / BO Engineer — DU Telecom, Dubai</h3>
+          <div class="meta">Nov 2018 — Dec 2020</div>
+          <ul class="list">
+            <li>Installed and configured networking devices on customer sites.</li>
+            <li>Provided hands‑on technical field support and escalations.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    <section id="skills" class="section container reveal">
+      <h2>Skills &amp; Certifications</h2>
+      <div class="cards">
+        <article class="card"><h3>Certifications</h3><p class="meta">PCNSE · CCNP‑S · CCNA</p></article>
+        <article class="card"><h3>Networking</h3><p class="meta">LAN/WAN · Cisco · Troubleshooting</p></article>
+        <article class="card"><h3>Systems</h3><p class="meta">Windows Server · Linux</p></article>
+        <article class="card"><h3>Tools</h3><p class="meta">VMware · Active Directory</p></article>
+        <article class="card"><h3>Security</h3><p class="meta">Firewall Configuration · Data Backup</p></article>
+      </div>
+    </section>
+    <section id="education" class="section container reveal">
+      <h2>Education</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Project Management in IT (PMC) — Seneca Polytechnic, Ontario</h3>
+          <div class="meta">Jan 2025 — Present</div>
+        </article>
+      </div>
+    </section>
+    <section id="contact" class="section container reveal">
+      <h2>Contact</h2>
+      <div class="cards">
+        <article class="card" style="grid-column: span 12;">
+          <h3>Get in touch</h3>
+          <p class="meta">Email: asifshake345gmail.com · Phone: 437‑223‑3792 · Location: North York, Ontario</p>
+          <p class="meta">References available upon request.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container">© <span id="year"></span> Asif Shaik • Inspired by ITCapitals theme</div>
+  </footer>
+  <script>
+    const io = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:0.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
