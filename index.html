@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="fulllogo_transparent_nobuffer.png">
   <style>
     :root{
       --bg:#060813; /* darker */
@@ -35,150 +37,82 @@
       line-height:1.6;
     }
     a{color:var(--link);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{width:min(1100px,92%);margin:0 auto}
-    header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
-      background:linear-gradient(180deg, rgba(6,8,19,.8), rgba(6,8,19,.45));
-      border-bottom:1px solid var(--border)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
-    .dot{width:12px;height:12px;border-radius:50%;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      box-shadow:0 0 22px rgba(155,92,255,.55)}
-    .nav-links{display:flex;gap:22px;font-weight:600}
-    .nav-links a{color:var(--text);opacity:.9}
-    .nav-links a:hover{color:var(--accent);opacity:1}
-    .hero{padding:96px 0 60px}
-    .hero-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
-    .badge{display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border-radius:999px;
-      border:1px solid var(--border);background:rgba(11,15,36,.6);box-shadow:var(--shadow);
-      transform:translateY(10px);opacity:0;animation:riseIn 900ms 140ms forwards ease-out}
-    .badge .ping{width:8px;height:8px;border-radius:50%;background:var(--cyan);
-      box-shadow:0 0 0 0 rgba(0,224,199,.6);animation:ping 2.2s infinite}
-    /* Name styling: bigger + shiny tech effect */
-    .title{font-size:clamp(48px,8vw,92px);line-height:1.03;font-weight:900;margin:14px 0 10px;letter-spacing:-.6px;
-      background:linear-gradient(90deg, #fff 0%, #d9ccff 20%, #8c5bff 45%, #00e0c7 55%, #d9ccff 80%, #fff 100%);
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-      filter:drop-shadow(0 6px 18px rgba(127,61,240,.25));
-      position:relative;overflow:hidden}
-    .title::after{content:"";position:absolute;top:0;left:-150%;width:50%;height:100%;
-      background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,.28) 50%, transparent 100%);
-      transform:skewX(-20deg);animation:shine 4.5s ease-in-out 1s infinite}
-    .subtitle{color:var(--muted);font-weight:500;max-width:62ch;transform:translateY(14px);opacity:0;animation:riseIn 900ms 340ms forwards ease-out}
-    .cta{display:flex;gap:14px;margin-top:26px;transform:translateY(16px);opacity:0;animation:riseIn 900ms 440ms forwards ease-out;flex-wrap:wrap}
-    .btn{border:1px solid var(--border);color:var(--text);
-      background:linear-gradient(180deg, rgba(28,20,56,.9), rgba(12,18,40,.9));
-      padding:12px 18px;border-radius:12px;font-weight:700;letter-spacing:.2px;
-      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
-    .btn:hover{transform:translateY(-2px);border-color:rgba(155,92,255,.5);box-shadow:0 10px 20px rgba(127,61,240,.22)}
-    .btn.primary{background:linear-gradient(135deg, rgba(127,61,240,.22), rgba(155,92,255,.18));border-color:rgba(155,92,255,.45)}
-    .profile-card{background:linear-gradient(180deg, rgba(17,27,56,.9), rgba(12,18,40,.9));border:1px solid var(--border);
-      border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
-      transform:translateY(18px);opacity:0;animation:riseIn 900ms 520ms forwards ease-out}
-    .profile-card .grid{display:grid;grid-template-columns:84px 1fr;gap:16px;align-items:center}
-    .avatar{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,#1a1f49,#121636);border:1px solid var(--border);position:relative;overflow:hidden}
-    .avatar::after{content:"";position:absolute;inset:-30%;background:radial-gradient(60px 60px at 20% 20%, rgba(127,61,240,.25), transparent 60%);filter:blur(12px)}
-    .profile-meta{font-size:14px;color:var(--muted)}
-    .section{padding:56px 0}
-    .section h2{font-size:clamp(22px,3vw,30px);margin:0 0 16px;letter-spacing:-.2px}
-    .section p.lead{color:var(--muted);margin:0 0 10px}
-    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .card{grid-column:span 12;background:linear-gradient(180deg, rgba(20,14,40,.6), rgba(9,11,25,.6));border:1px solid var(--border);border-radius:var(--radius);padding:18px}
-    .card h3{margin:0 0 6px}
-    .card .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
-    .list{margin:8px 0 0 18px}
-    /* Social icons row */
-    .socials{display:flex;gap:14px;margin-top:18px}
-    .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;border:1px solid var(--border);
-      background:linear-gradient(180deg, rgba(17,19,38,.9), rgba(13,15,33,.9));
-      box-shadow:0 6px 18px rgba(0,0,0,.25), inset 0 0 18px rgba(127,61,240,.12);
-      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
-    .icon-btn:hover{transform:translateY(-2px);border-color:rgba(155,92,255,.55);box-shadow:0 10px 22px rgba(127,61,240,.28)}
-    .icon{width:22px;height:22px;display:block;filter:drop-shadow(0 2px 8px rgba(155,92,255,.25))}
-    /* Contact form */
-    .contact{background:linear-gradient(180deg, rgba(20,14,40,.6), rgba(9,11,25,.6));border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
-    .field{display:flex;flex-direction:column;gap:8px;margin:10px 0}
-    .field label{font-weight:600;color:#cfd6ee}
-    .field input,.field textarea,.field select{background:#0b0f24;border:1px solid rgba(255,255,255,.1);color:var(--text);padding:12px 12px;border-radius:10px;outline:none}
-    .field input::file-selector-button{background:linear-gradient(135deg, rgba(127,61,240,.25), rgba(155,92,255,.2));border:1px solid rgba(155,92,255,.5);color:#fff;padding:8px 12px;border-radius:8px;margin-right:10px}
-    @keyframes ping{0%{box-shadow:0 0 0 0 rgba(0,224,199,.7)}70%{box-shadow:0 0 0 16px rgba(0,224,199,0)}100%{box-shadow:0 0 0 0 rgba(0,224,199,0)}}
-    @keyframes riseIn{to{transform:none;opacity:1}}
-    @keyframes shine{0%{left:-150%} 60%{left:120%} 100%{left:120%}}
-    @media (max-width: 860px){
-      .hero-wrap{grid-template-columns:1fr}
-      .profile-card .grid{grid-template-columns:72px 1fr}
+    header{
+      position:sticky;top:0;z-index:10;
+      background:rgba(6,8,19,.75);backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:12px 0}
+    nav a{padding:8px 12px;border-radius:10px;color:var(--text)}
+    nav a:hover{background:rgba(127,61,240,.15)}
+
+    .hero{display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:center;padding:26px;border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(180deg, rgba(11,15,36,.7), rgba(11,15,36,.5));box-shadow:var(--shadow)}
+    .avatar{width:120px;height:120px;border-radius:50%;background-size:cover;background-position:center;border:3px solid rgba(127,61,240,.35)}
+    .hero h1{margin:0;font-size:28px}
+    .hero .subtitle{color:var(--muted)}
+    .actions{display:flex;gap:12px;margin-top:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:#121734;color:var(--text)}
+    .btn.accent{background:linear-gradient(90deg, var(--accent), var(--accent-2));border:none}
+
+    .section{padding:38px 0}
+    .section h2{margin:0 0 12px;font-size:24px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .meta{color:var(--muted);font-size:14px;margin:6px 0 10px}
+    .list{margin:0;padding-left:18px}
+
+    /* Skills */
+    .skill-tags{display:flex;flex-wrap:wrap;gap:10px}
+    .tag{padding:8px 10px;border-radius:999px;background:rgba(127,61,240,.18);border:1px solid var(--border);font-size:14px}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input, textarea{background:#0d132b;color:var(--text);border:1px solid var(--border);border-radius:12px;padding:10px}
+    textarea{min-height:120px}
+    .footer{color:var(--muted);text-align:center;padding:20px 0;border-top:1px solid var(--border)}
+
+    @media (max-width:640px){
+      .hero{grid-template-columns:80px 1fr}
+      .avatar{width:80px;height:80px}
     }
   </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <div class="brand"><span class="dot"></span> Asif Shaik</div>
-      <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#contact">Contact</a>
+  <header>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
-    </div>
-  </header>
-  <main>
-    <section class="hero">
-      <div class="container hero-wrap">
+      <section class="hero" id="about">
+        <div class="avatar" style="background-image:url('PP size pic - Copy.jpg')"></div>
         <div>
-          <div class="badge"><span class="ping"></span>IT Professional • Network & Systems</div>
-          <h1 class="title">Asif Shaik</h1>
-          <p class="subtitle">Experienced IT professional with 5+ years across IT operations, network engineering, systems administration, and technical support. PMP-certified, focused on secure, scalable, high-availability environments. Based in Ontario, Canada.</p>
-          <div class="cta">
-            <a class="btn primary" href="#contact">Get in touch</a>
-            <a class="btn" href="#experience">View experience</a>
-            <a class="btn primary" href="Asif-shaik-CV.pdf" download>Download CV</a>
-          </div>
-          <div class="socials">
-            <a aria-label="LinkedIn" class="icon-btn" href="https://www.linkedin.com/in/asif-shaik345/" rel="noopener" target="_blank">
-              <img class="icon" alt="LinkedIn" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" />
-            </a>
-            <a aria-label="GitHub" class="icon-btn" href="https://github.com/Ashaik-Learn" rel="noopener" target="_blank">
-              <img class="icon" alt="GitHub" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" />
-            </a>
-            <a aria-label="Discord" class="icon-btn" href="https://discord.com/users/siffy0814" rel="noopener" target="_blank">
-              <img class="icon" alt="Discord" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" />
-            </a>
-            <a aria-label="Email" class="icon-btn" href="mailto:asifshake345gmail.com">
-              <img class="icon" alt="Email" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/maildotru.svg" />
-            </a>
+          <h1>Asif Shaik</h1>
+          <div class="subtitle">Ontario • Network &amp; Systems Engineer</div>
+          <div class="actions">
+            <a class="btn accent" href="Asif shaik CV.pdf" download>Download CV</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.linkedin.com/in/asif-shaik345/">LinkedIn</a>
+            <a class="btn" target="_blank" rel="noopener" href="mailto:ashaik@example.com">Email</a>
           </div>
         </div>
-        <aside>
-          <div class="profile-card">
-            <div class="grid">
-              <div class="avatar" style="background-image:url('https://media.licdn.com/dms/image/D4D03AQH8wz0qWbqxxw/profile-displayphoto-shrink_200_200/0/169?e=2147483647&v=beta&t=x');background-size:cover;background-position:center"></div>
-              <div>
-                <strong>Asif Shaik</strong>
-                <div class="profile-meta">Ontario • Network & Systems Engineer</div>
-                <div class="profile-meta"><a href="https://www.linkedin.com/in/asif-shaik345/" rel="noopener" target="_blank">LinkedIn Profile</a></div>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
+      </section>
+    </div>
+  </header>
 
-    <section class="section" id="about">
-      <div class="container">
-        <h2>About</h2>
-        <p class="lead">I design, deploy, and maintain reliable network and system infrastructures with a security-first mindset, ensuring performance, resilience, and business continuity.</p>
-      </div>
-    </section>
-
-    <section class="section" id="experience">
-      <div class="container">
+  <main>
+    <div class="container">
+      <section class="section" id="experience">
         <h2>Experience</h2>
         <div class="cards">
           <article class="card">
-            <h3>Founder & All‑rounder — IT Capitals</h3>
+            <h3>Founder &amp; All‑rounder — IT Capitals</h3>
             <div class="meta">Freelancer • Feb 2025 – Present • Ontario, Canada</div>
             <ul class="list">
               <li>Leading product and delivery for multiple ongoing projects.</li>
@@ -200,4 +134,103 @@
             <div class="meta">Dubai • Jan 2021 – Dec 2022</div>
             <ul class="list">
               <li>Designed, implemented, and maintained network infrastructure across enterprise environments.</li>
-              <li>Resolved network incidents, optimized performance, and improved
+              <li>Resolved network incidents and optimized network performance.</li>
+              <li>Improved monitoring, documentation, and SOPs.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="skills">
+        <h2>Skills</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Networking</h3>
+            <div class="skill-tags">
+              <span class="tag">Routing &amp; Switching</span>
+              <span class="tag">TCP/IP</span>
+              <span class="tag">VLANs</span>
+              <span class="tag">Firewalls</span>
+              <span class="tag">VPN</span>
+              <span class="tag">Cisco</span>
+              <span class="tag">MikroTik</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Systems</h3>
+            <div class="skill-tags">
+              <span class="tag">Windows Server</span>
+              <span class="tag">Active Directory</span>
+              <span class="tag">Group Policy</span>
+              <span class="tag">Backup &amp; Recovery</span>
+              <span class="tag">PowerShell</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Cloud &amp; Tools</h3>
+            <div class="skill-tags">
+              <span class="tag">Azure</span>
+              <span class="tag">AWS</span>
+              <span class="tag">Git/GitHub</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Linux</span>
+              <span class="tag">Monitoring</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="education">
+        <h2>Education</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Bachelor of Technology — Information Technology</h3>
+            <div class="meta">JNTU — Graduated</div>
+            <ul class="list">
+              <li>Coursework: Networks, Operating Systems, Databases, Security.</li>
+              <li>Projects: Network design and systems administration labs.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="certifications">
+        <h2>Certifications</h2>
+        <div class="cards">
+          <article class="card">
+            <ul class="list">
+              <li>PMP — Project Management Professional</li>
+              <li>CCNA — Cisco Certified Network Associate</li>
+              <li>Azure Fundamentals (AZ‑900)</li>
+              <li>ITIL Foundation</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <h2>Contact</h2>
+        <div class="cards">
+          <article class="card">
+            <form action="https://formspree.io/f/xbjennnn" method="POST">
+              <input type="text" name="name" placeholder="Your name" required>
+              <input type="email" name="email" placeholder="Your email" required>
+              <textarea name="message" placeholder="Your message" required></textarea>
+              <button class="btn accent" type="submit">Send Message</button>
+            </form>
+            <p class="meta">Or email directly: <a href="mailto:ashaik@example.com">ashaik@example.com</a></p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="y"></span> Asif Shaik</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
